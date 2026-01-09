@@ -270,11 +270,6 @@
       background: var(--accent2);
       display:inline-block;
     }
-    .cover img{
-      width:100%; height:100%; object-fit:cover;
-      display:block;
-      filter: saturate(1.05) contrast(1.04);
-    }
 
     .meta{
       display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
@@ -396,7 +391,7 @@
         <nav class="nav">
           <a class="chip" href="#browse">Browse</a>
           <a class="chip" href="#about">About</a>
-          <a class="chip primary" href="#commission">Commission an EchoStory</a>
+          <a class="chip primary" href="https://aerovista-us.github.io/echostory/" target="_blank" rel="noopener noreferrer">Commission an EchoStory</a>
         </nav>
       </div>
     </div>
@@ -480,8 +475,7 @@
         <div>
           <b style="color:rgba(255,255,255,.9);">Commissioning</b>
           <p style="margin:10px 0 0;">
-            Click “Start a commission” to open an email template. You’ll be asked for:
-            who it’s for, the vibe, key moments, and any must-include lines.
+            Clicking “Start a commission” will take you to the EchoStory commissioning page.
           </p>
           <p style="margin:10px 0 0; color:rgba(255,255,255,.72);">
             © <span id="year"></span> EchoStory — crafted under AeroVista LLC.
@@ -506,114 +500,30 @@
   </div>
 
   <script>
-    // ====== EDIT HERE ======
-    // Optional: set your commission contact email
-    const COMMISSION_EMAIL = "hello@yourdomain.com"; // <-- change this
-    const BRAND_NAME = "EchoStory";
+    // Commission page URL (used by all "Start a commission" buttons)
+    const COMMISSION_PAGE_URL = "https://aerovista-us.github.io/echostory/";
 
-    // GitHub Pages deploy links + repo links (as you specified)
+    // GitHub Pages deploy links + repo links
     const STORIES = [
-      {
-        id: "newyears26",
-        title: "New Years 26",
-        vibe: "Seasonal / celebration",
-        desc: "Public EchoStory page example.",
-        featured: true,
-        type: "Page",
-        tags: ["featured","seasonal"],
-        liveUrl: "https://aerovista-us.github.io/newyears26/",
-        repoUrl: "https://github.com/aerovista-us/newyears26"
-      },
-      {
-        id: "aerovista-onboarding-",
-        title: "AeroVista Onboarding",
-        vibe: "Onboarding / introduction",
-        desc: "Public onboarding-style EchoStory page example.",
-        featured: true,
-        type: "Page",
-        tags: ["onboarding","guide","featured"],
-        liveUrl: "https://aerovista-us.github.io/aerovista-onboarding-/",
-        repoUrl: "https://github.com/aerovista-us/aerovista-onboarding-"
-      },
-      {
-        id: "pines",
-        title: "Pines",
-        vibe: "Nature / calm",
-        desc: "A public EchoStory page.",
-        featured: false,
-        type: "Page",
-        tags: ["nature","calm"],
-        liveUrl: "https://aerovista-us.github.io/pines/",
-        repoUrl: "https://github.com/aerovista-us/pines"
-      },
-      {
-        id: "bland",
-        title: "Bland",
-        vibe: "Minimal / experimental",
-        desc: "A public EchoStory page.",
-        featured: false,
-        type: "Page",
-        tags: ["minimal","experimental"],
-        liveUrl: "https://aerovista-us.github.io/bland/",
-        repoUrl: "https://github.com/aerovista-us/bland"
-      },
-      {
-        id: "revolution",
-        title: "Revolution",
-        vibe: "Hype / momentum",
-        desc: "A public EchoStory page.",
-        featured: false,
-        type: "Page",
-        tags: ["hype","anthem"],
-        liveUrl: "https://aerovista-us.github.io/revolution/",
-        repoUrl: "https://github.com/aerovista-us/revolution"
-      },
-      {
-        id: "lookin4sheet",
-        title: "Lookin4Sheet",
-        vibe: "Fun / quirky",
-        desc: "A public EchoStory page.",
-        featured: false,
-        type: "Page",
-        tags: ["fun","quirky"],
-        liveUrl: "https://aerovista-us.github.io/lookin4sheet/",
-        repoUrl: "https://github.com/aerovista-us/lookin4sheet"
-      },
-      {
-        id: "cornerpocket",
-        title: "CornerPocket",
-        vibe: "Pool / nightlife",
-        desc: "A public EchoStory page.",
-        featured: false,
-        type: "Page",
-        tags: ["pool","nightlife"],
-        liveUrl: "https://aerovista-us.github.io/cornerpocket/",
-        repoUrl: "https://github.com/aerovista-us/cornerpocket"
-      },
-      {
-        id: "bonsaid",
-        title: "Bonsaid",
-        vibe: "Zen / craft",
-        desc: "A public EchoStory page.",
-        featured: false,
-        type: "Page",
-        tags: ["zen","craft"],
-        liveUrl: "https://aerovista-us.github.io/bonsaid/",
-        repoUrl: "https://github.com/aerovista-us/bonsaid"
-      },
-      {
-        id: "AV_About",
-        title: "AV About",
-        vibe: "About / brand",
-        desc: "A public about page example.",
-        featured: true,
-        type: "Page",
-        tags: ["about","brand","featured"],
-        liveUrl: "https://aerovista-us.github.io/AV_About/",
-        repoUrl: "https://github.com/aerovista-us/AV_About"
-      }
+      { id:"newyears26", title:"New Years 26", vibe:"Seasonal / celebration", desc:"Public EchoStory page example.", featured:true, type:"Page",
+        tags:["featured","seasonal"], liveUrl:"https://aerovista-us.github.io/newyears26/", repoUrl:"https://github.com/aerovista-us/newyears26" },
+      { id:"aerovista-onboarding-", title:"AeroVista Onboarding", vibe:"Onboarding / introduction", desc:"Public onboarding-style EchoStory page example.", featured:true, type:"Page",
+        tags:["onboarding","guide","featured"], liveUrl:"https://aerovista-us.github.io/aerovista-onboarding-/", repoUrl:"https://github.com/aerovista-us/aerovista-onboarding-" },
+      { id:"pines", title:"Pines", vibe:"Nature / calm", desc:"A public EchoStory page.", featured:false, type:"Page",
+        tags:["nature","calm"], liveUrl:"https://aerovista-us.github.io/pines/", repoUrl:"https://github.com/aerovista-us/pines" },
+      { id:"bland", title:"Bland", vibe:"Minimal / experimental", desc:"A public EchoStory page.", featured:false, type:"Page",
+        tags:["minimal","experimental"], liveUrl:"https://aerovista-us.github.io/bland/", repoUrl:"https://github.com/aerovista-us/bland" },
+      { id:"revolution", title:"Revolution", vibe:"Hype / momentum", desc:"A public EchoStory page.", featured:false, type:"Page",
+        tags:["hype","anthem"], liveUrl:"https://aerovista-us.github.io/revolution/", repoUrl:"https://github.com/aerovista-us/revolution" },
+      { id:"lookin4sheet", title:"Lookin4Sheet", vibe:"Fun / quirky", desc:"A public EchoStory page.", featured:false, type:"Page",
+        tags:["fun","quirky"], liveUrl:"https://aerovista-us.github.io/lookin4sheet/", repoUrl:"https://github.com/aerovista-us/lookin4sheet" },
+      { id:"cornerpocket", title:"CornerPocket", vibe:"Pool / nightlife", desc:"A public EchoStory page.", featured:false, type:"Page",
+        tags:["pool","nightlife"], liveUrl:"https://aerovista-us.github.io/cornerpocket/", repoUrl:"https://github.com/aerovista-us/cornerpocket" },
+      { id:"bonsaid", title:"Bonsaid", vibe:"Zen / craft", desc:"A public EchoStory page.", featured:false, type:"Page",
+        tags:["zen","craft"], liveUrl:"https://aerovista-us.github.io/bonsaid/", repoUrl:"https://github.com/aerovista-us/bonsaid" },
+      { id:"AV_About", title:"AV About", vibe:"About / brand", desc:"A public about page example.", featured:true, type:"Page",
+        tags:["about","brand","featured"], liveUrl:"https://aerovista-us.github.io/AV_About/", repoUrl:"https://github.com/aerovista-us/AV_About" }
     ];
-    // ====== END EDIT ======
 
     const $ = (s)=>document.querySelector(s);
     const $$ = (s)=>Array.from(document.querySelectorAll(s));
@@ -715,26 +625,8 @@
       `;
     }
 
-    function commissionMailto(){
-      const to = COMMISSION_EMAIL && COMMISSION_EMAIL.includes("@") ? COMMISSION_EMAIL : "";
-      const subject = `${BRAND_NAME} Commission Request`;
-      const bodyLines = [
-        "Hi EchoStory team,",
-        "",
-        "I want to commission an EchoStory.",
-        "",
-        "1) Who is this for? (person/pet/group):",
-        "2) Occasion / reason:",
-        "3) Desired vibe (hype, tender, funny, reflective, etc.):",
-        "4) 3–7 key moments / details:",
-        "5) Any must-include lines, names, or inside jokes:",
-        "6) Length preference (60–90s, 2–3m, 4–5m):",
-        "7) Where it will be shared (private, social, event, etc.):",
-        "",
-        `— Sent from the ${BRAND_NAME} Directory`
-      ];
-      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
-      window.location.href = mailto;
+    function goCommission(){
+      window.open(COMMISSION_PAGE_URL, "_blank", "noopener,noreferrer");
     }
 
     function render(){
@@ -755,7 +647,7 @@
              </div>
              <div class="btnRow" style="margin-top:12px;">
                <button class="btn ghost" id="clearFilters">Clear filters</button>
-               <button class="btn primary" id="promptCommission">Commission an EchoStory</button>
+               <button class="btn primary" id="promptCommission">Start a commission</button>
              </div>
            </div>`;
 
@@ -772,7 +664,7 @@
       }
       const promptBtn = $("#promptCommission");
       if(promptBtn){
-        promptBtn.addEventListener("click", ()=> commissionMailto());
+        promptBtn.addEventListener("click", ()=> goCommission());
       }
     }
 
@@ -800,9 +692,11 @@
       }
     });
 
-    // Commission buttons
-    $("#btnCommission").addEventListener("click", ()=> commissionMailto());
-    $("#stickyCommission").addEventListener("click", ()=> commissionMailto());
+    // Commission buttons now go to the EchoStory page
+    $("#btnCommission").addEventListener("click", ()=> goCommission());
+    $("#stickyCommission").addEventListener("click", ()=> goCommission());
+
+    // Brief template copy stays (useful), but no email send
     $("#btnBrief").addEventListener("click", ()=>{
       const brief = [
         "EchoStory Commission Brief Template",
