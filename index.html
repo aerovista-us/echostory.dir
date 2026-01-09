@@ -198,4 +198,484 @@
       color: var(--muted);
       cursor:pointer;
       user-select:none;
-      transition:.15
+      transition:.15s ease;
+    }
+    .tag:hover{ background: rgba(255,255,255,.07); color: var(--text); }
+    .tag.on{
+      background: rgba(124,92,255,.18);
+      border-color: rgba(124,92,255,.55);
+      color: rgba(255,255,255,.92);
+    }
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .story{ grid-column: span 4; overflow:hidden; position:relative; }
+    @media (max-width: 1120px){ .story{ grid-column: span 6; } }
+    @media (max-width: 680px){ .story{ grid-column: span 12; } }
+    .storyInner{ padding:14px; display:flex; flex-direction:column; gap:12px; }
+    .cover{
+      height:168px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(120px 90px at 25% 25%, rgba(124,92,255,.35), transparent 70%),
+        radial-gradient(140px 120px at 75% 35%, rgba(49,208,170,.22), transparent 70%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position:relative; overflow:hidden;
+    }
+    .cover .badge{
+      position:absolute; top:12px; left:12px;
+      padding:7px 10px;
+      border-radius: 999px;
+      font-size:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.30);
+      color: rgba(255,255,255,.86);
+      display:inline-flex; gap:8px; align-items:center;
+    }
+    .badge i{ width:8px; height:8px; border-radius:999px; background: var(--accent2); display:inline-block; }
+    .meta{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .meta h3{ margin:0; font-size:16px; letter-spacing:-.2px; line-height:1.2; }
+    .meta small{ display:block; margin-top:5px; color:var(--muted); font-size:12px; line-height:1.35; }
+    .len{
+      font-family: var(--mono);
+      font-size:12px;
+      color: rgba(255,255,255,.75);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:8px 10px;
+      border-radius: 12px;
+      white-space:nowrap;
+      height: fit-content;
+    }
+    .desc{ margin:0; color: var(--muted); font-size:13px; line-height:1.45; min-height: 40px; }
+    .tagMini{ display:flex; flex-wrap:wrap; gap:8px; }
+    .tagMini span{
+      font-size:11px;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.72);
+    }
+    .storyActions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:2px; }
+    .storyActions .btn{ padding:10px 12px; border-radius: 12px; font-weight:800; font-size:12px; }
+    .btn.open{ background: rgba(49,208,170,.16); border:1px solid rgba(49,208,170,.35); color: rgba(255,255,255,.92); }
+    .btn.open:hover{ background: rgba(49,208,170,.22); }
+    .btn.repo{ background: rgba(124,92,255,.14); border:1px solid rgba(124,92,255,.35); color: rgba(255,255,255,.92); }
+    .btn.repo:hover{ background: rgba(124,92,255,.20); }
+    .btn.share{ background: rgba(255,255,255,.05); border:1px solid var(--line); color: rgba(255,255,255,.86); }
+    .btn.share:hover{ background: rgba(255,255,255,.08); }
+    .footer{
+      margin:26px 0 80px;
+      padding:18px;
+      border-top:1px solid var(--line);
+      color: var(--muted2);
+      font-size:12px;
+      line-height:1.55;
+    }
+    .footer .cols{ display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; }
+    @media (max-width: 980px){ .footer .cols{ grid-template-columns:1fr; } }
+    .stickyAd{
+      position: fixed;
+      left: 16px; right:16px;
+      bottom: 14px;
+      z-index: 60;
+      display:flex; justify-content:center;
+      pointer-events:none;
+    }
+    .stickyAdInner{
+      pointer-events:auto;
+      width:min(var(--max), 100%);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 18px;
+      border:1px solid rgba(49,208,170,.32);
+      background: rgba(8,10,18,.70);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+    .stickyAdInner b{ font-size:12px; }
+    .stickyAdInner span{ font-size:12px; color: var(--muted); }
+    .stickyAdInner .btn{ padding:10px 12px; border-radius: 14px; }
+    .stickyAdInner .btn.primary{ box-shadow:none; }
+    .stickyAdInner .btn.ghost{ padding:10px 10px; }
+
+    /* Load/error state */
+    .notice{
+      grid-column: 1 / -1;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.78);
+      line-height:1.5;
+    }
+    .notice b{ color: rgba(255,255,255,.92); }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="titleblock">
+            <b>EchoStory Directory</b>
+            <span>Explore public examples • open, enjoy</span>
+          </div>
+        </div>
+        <nav class="nav">
+          <a class="chip" href="#browse">Browse</a>
+          <a class="chip" href="#about">About</a>
+          <a class="chip primary" href="https://aerovista-us.github.io/echostory/" target="_blank" rel="noopener noreferrer">Commission an EchoStory</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="browse">
+      <div class="heroGrid">
+        <div class="card heroCard">
+          <h1>Pick a vibe. Open a story.</h1>
+          <p class="sub">
+            A public directory of EchoStory examples hosted on GitHub Pages.
+            Browse for inspiration, find something new, or just click and enjoy.
+          </p>
+          <div class="stats">
+            <span class="pill"><i></i><span id="statCount">—</span> stories</span>
+            <span class="pill"><i></i><span id="statTags">—</span> tags</span>
+            <span class="pill"><i></i>lightweight • mobile-first</span>
+          </div>
+        </div>
+
+        <div class="card ctaCard" id="commission">
+          <div class="ctaHeader">
+            <div>
+              <b>Want one made for you?</b>
+              <small>
+                EchoStory commissions turn your idea into an audio/story page you can share forever.
+                Choose a vibe, drop a few details, and we’ll craft something personal.
+              </small>
+            </div>
+            <span class="pill" title="Subtle ad, loud quality"><i></i>EchoStory</span>
+          </div>
+          <div class="btnRow">
+            <button class="btn primary" id="btnCommission">Start a commission</button>
+            <button class="btn ghost" id="btnBrief">Copy brief template</button>
+          </div>
+          <div class="pill" style="margin-top:12px;">
+            <i></i>3–7 bullet points is enough to begin.
+          </div>
+        </div>
+      </div>
+
+      <div class="card filters" style="margin-top:16px;">
+        <div>
+          <label for="q">Search</label>
+          <input id="q" type="text" placeholder="Search title, vibe, tags…" autocomplete="off"/>
+        </div>
+        <div>
+          <label for="sort">Sort</label>
+          <select id="sort">
+            <option value="featured">Featured first</option>
+            <option value="title">Title A → Z</option>
+          </select>
+        </div>
+        <div>
+          <label for="tagMode">Tag mode</label>
+          <select id="tagMode">
+            <option value="any">Match any selected tag</option>
+            <option value="all">Match all selected tags</option>
+          </select>
+        </div>
+        <div style="grid-column: 1 / -1; padding-top:6px;">
+          <label>Popular tags</label>
+          <div class="tagRow" id="tagRow"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="grid"></section>
+
+    <section class="footer" id="about">
+      <div class="cols">
+        <div>
+          <b style="color:rgba(255,255,255,.9);">About EchoStory</b>
+          <p style="margin:10px 0 0;">
+            EchoStory is a storytelling format designed to feel like a memory you can press play on —
+            sometimes a song, sometimes a narrative, sometimes a hybrid. This directory is public so people
+            can explore examples and find a vibe that fits.
+          </p>
+        </div>
+        <div>
+          <b style="color:rgba(255,255,255,.9);">Commissioning</b>
+          <p style="margin:10px 0 0;">
+            Clicking “Start a commission” takes you to the EchoStory commissioning page.
+          </p>
+          <p style="margin:10px 0 0; color:rgba(255,255,255,.72);">
+            © <span id="year"></span> EchoStory — crafted under AeroVista LLC.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="stickyAd" id="stickyAd">
+    <div class="stickyAdInner">
+      <div style="display:flex; flex-direction:column; gap:2px;">
+        <b>EchoStory commissions</b>
+        <span>Turn a moment into something you can replay forever.</span>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="btn primary" id="stickyCommission">Start</button>
+        <button class="btn ghost" id="stickyHide" aria-label="Hide">Hide</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const COMMISSION_PAGE_URL = "https://aerovista-us.github.io/echostory/";
+    const STORIES_JSON_URL = "./stories.json"; // same directory as index.html
+    let STORIES = []; // loaded from JSON
+
+    const $ = (s)=>document.querySelector(s);
+    const $$ = (s)=>Array.from(document.querySelectorAll(s));
+    const grid = $("#grid");
+    const q = $("#q");
+    const sort = $("#sort");
+    const tagRow = $("#tagRow");
+    const tagMode = $("#tagMode");
+    const selectedTags = new Set();
+
+    function escapeHtml(str){
+      return String(str ?? "").replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    function goCommission(){
+      window.open(COMMISSION_PAGE_URL, "_blank", "noopener,noreferrer");
+    }
+
+    function allTags(){
+      const t = new Map();
+      STORIES.forEach(st => (st.tags||[]).forEach(tag => t.set(tag, (t.get(tag)||0)+1)));
+      return Array.from(t.entries()).sort((a,b)=> (b[1]-a[1]) || a[0].localeCompare(b[0]));
+    }
+
+    function buildTags(){
+      const tags = allTags();
+      $("#statTags").textContent = String(tags.length);
+      tagRow.innerHTML = tags.slice(0, 18).map(([tag, count])=>{
+        return `<span class="tag" data-tag="${escapeHtml(tag)}" title="${count} stories">${escapeHtml(tag)}</span>`;
+      }).join("");
+
+      // Remove old listener by replacing node (prevents duplicates on reload)
+      const newRow = tagRow.cloneNode(true);
+      tagRow.parentNode.replaceChild(newRow, tagRow);
+      // rebind
+      const row = $("#tagRow");
+      row.addEventListener("click", (e)=>{
+        const el = e.target.closest(".tag");
+        if(!el) return;
+        const t = el.getAttribute("data-tag");
+        if(selectedTags.has(t)){ selectedTags.delete(t); el.classList.remove("on"); }
+        else { selectedTags.add(t); el.classList.add("on"); }
+        render();
+      });
+    }
+
+    function matchesQuery(st, needle){
+      if(!needle) return true;
+      const hay = [
+        st.title, st.vibe, st.desc, st.type,
+        (st.tags||[]).join(" ")
+      ].join(" ").toLowerCase();
+      return hay.includes(needle);
+    }
+
+    function matchesTags(st){
+      if(selectedTags.size === 0) return true;
+      const tags = new Set(st.tags || []);
+      if(tagMode.value === "all"){
+        for(const t of selectedTags) if(!tags.has(t)) return false;
+        return true;
+      } else {
+        for(const t of selectedTags) if(tags.has(t)) return true;
+        return false;
+      }
+    }
+
+    function sortStories(list){
+      const mode = sort.value;
+      const copy = [...list];
+      if(mode === "featured"){
+        copy.sort((a,b)=>{
+          if(!!b.featured !== !!a.featured) return (b.featured?1:0)-(a.featured?1:0);
+          return (a.title||"").localeCompare(b.title||"");
+        });
+      } else {
+        copy.sort((a,b)=> (a.title||"").localeCompare(b.title||""));
+      }
+      return copy;
+    }
+
+    function storyCard(st){
+      const miniTags = (st.tags||[]).slice(0,5).map(t=>`<span>${escapeHtml(t)}</span>`).join("");
+      const safeId = encodeURIComponent(st.id);
+      return `
+        <article class="card story" data-id="${escapeHtml(st.id)}">
+          <div class="storyInner">
+            <div class="cover">
+              <div class="badge"><i></i>${escapeHtml(st.type || "Page")}</div>
+            </div>
+            <div class="meta">
+              <div>
+                <h3>${escapeHtml(st.title)}</h3>
+                <small>${escapeHtml(st.vibe || "")}</small>
+              </div>
+              <div class="len">${st.featured ? "★ Featured" : "↗ Live"}</div>
+            </div>
+            <p class="desc">${escapeHtml(st.desc || "")}</p>
+            <div class="tagMini">${miniTags}</div>
+            <div class="storyActions">
+              <button class="btn open" data-action="open" data-id="${safeId}">↗ Open</button>
+              <button class="btn repo" data-action="repo" data-id="${safeId}">Repo</button>
+              <button class="btn share" data-action="share" data-id="${safeId}">Share</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function render(){
+      const needle = (q.value || "").trim().toLowerCase();
+      const filtered = STORIES
+        .filter(st => matchesQuery(st, needle))
+        .filter(st => matchesTags(st));
+
+      const sorted = sortStories(filtered);
+      $("#statCount").textContent = String(sorted.length);
+
+      grid.innerHTML = sorted.length
+        ? sorted.map(storyCard).join("")
+        : `<div class="notice">
+             <b>No matches.</b><br/>
+             Try a different search, clear tags, or switch tag mode.
+           </div>`;
+    }
+
+    // Card button actions
+    grid.addEventListener("click", (e)=>{
+      const btn = e.target.closest("button[data-action]");
+      if(!btn) return;
+      const id = decodeURIComponent(btn.getAttribute("data-id"));
+      const st = STORIES.find(s => s.id === id);
+      if(!st) return;
+
+      const action = btn.getAttribute("data-action");
+      if(action === "open"){
+        window.open(st.liveUrl, "_blank", "noopener,noreferrer");
+      } else if(action === "repo"){
+        window.open(st.repoUrl, "_blank", "noopener,noreferrer");
+      } else if(action === "share"){
+        const url = st.liveUrl;
+        navigator.clipboard?.writeText(url).then(()=>{
+          btn.textContent = "Copied ✓";
+          setTimeout(()=>btn.textContent="Share", 900);
+        }).catch(()=>{
+          prompt("Copy this link:", url);
+        });
+      }
+    });
+
+    // Commission buttons
+    $("#btnCommission").addEventListener("click", goCommission);
+    $("#stickyCommission").addEventListener("click", goCommission);
+
+    // Brief template copy
+    $("#btnBrief").addEventListener("click", ()=>{
+      const brief = [
+        "EchoStory Commission Brief Template",
+        "",
+        "• Who is it for?",
+        "• Occasion / why now?",
+        "• Vibe (pick 1–2): hype / tender / funny / reflective / spooky / victorious / healing",
+        "• 3–7 moments (bullets):",
+        "• Names + must-include phrases:",
+        "• Length preference:",
+        "• Any boundaries:",
+        ""
+      ].join("\n");
+      navigator.clipboard?.writeText(brief).then(()=>{
+        alert("Brief template copied to clipboard.");
+      }).catch(()=>{
+        prompt("Copy this template:", brief);
+      });
+    });
+
+    $("#stickyHide").addEventListener("click", ()=>{
+      $("#stickyAd").style.display = "none";
+    });
+
+    q.addEventListener("input", render);
+    sort.addEventListener("change", render);
+    tagMode.addEventListener("change", render);
+
+    async function loadStories(){
+      grid.innerHTML = `<div class="notice"><b>Loading stories…</b><br/>Fetching <span style="font-family:var(--mono)">${escapeHtml(STORIES_JSON_URL)}</span></div>`;
+      try{
+        const res = await fetch(STORIES_JSON_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error("stories.json is not an array");
+
+        // minimal validation + normalization
+        STORIES = data
+          .filter(x => x && typeof x.id === "string" && x.id.trim().length)
+          .map(x => ({
+            id: String(x.id),
+            title: String(x.title ?? x.id),
+            vibe: String(x.vibe ?? ""),
+            desc: String(x.desc ?? ""),
+            featured: !!x.featured,
+            type: String(x.type ?? "Page"),
+            tags: Array.isArray(x.tags) ? x.tags.map(String) : [],
+            liveUrl: String(x.liveUrl ?? ""),
+            repoUrl: String(x.repoUrl ?? "")
+          }))
+          .filter(x => x.liveUrl && x.repoUrl);
+
+        buildTags();
+        render();
+      }catch(err){
+        console.error(err);
+        $("#statCount").textContent = "—";
+        $("#statTags").textContent = "—";
+        grid.innerHTML = `
+          <div class="notice">
+            <b>Couldn’t load stories.json.</b><br/>
+            Make sure <span style="font-family:var(--mono)">index.html</span> and
+            <span style="font-family:var(--mono)">stories.json</span> are in the same folder, and you’re viewing this from a web server (GitHub Pages is perfect).<br/><br/>
+            <span style="color:rgba(255,255,255,.62); font-family:var(--mono)">Error:</span>
+            <span style="color:rgba(255,255,255,.72); font-family:var(--mono)">${escapeHtml(err?.message || "unknown")}</span>
+          </div>
+        `;
+      }
+    }
+
+    // Initialize
+    $("#year").textContent = new Date().getFullYear();
+    loadStories();
+  </script>
+</body>
+</html>
