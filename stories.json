@@ -1,0 +1,118 @@
+[
+  {
+    "id": "unheard",
+    "title": "Unheard",
+    "vibe": "Discovery / unheard voices",
+    "desc": "A showcase of voices, ideas, or moments that don’t usually get the spotlight. Designed as a discovery-forward EchoStory experience — minimal friction, maximum curiosity.",
+    "featured": true,
+    "type": "Page",
+    "tags": ["featured", "discovery", "new", "experimental"],
+    "liveUrl": "https://aerovista-us.github.io/unheard/",
+    "repoUrl": "https://github.com/aerovista-us/unheard"
+  },
+  {
+    "id": "sound",
+    "title": "Sound",
+    "vibe": "Audio-first / tone & texture",
+    "desc": "An EchoStory centered on sound itself — tone, texture, pacing, and atmosphere. Less explanation, more feeling. Built to let audio carry the narrative weight.",
+    "featured": true,
+    "type": "Page",
+    "tags": ["audio", "atmosphere", "minimal", "experimental"],
+    "liveUrl": "https://aerovista-us.github.io/sound/",
+    "repoUrl": "https://github.com/aerovista-us/sound"
+  },
+  {
+    "id": "echo_room",
+    "title": "Echo Room",
+    "vibe": "Exploration / resonance",
+    "desc": "An EchoStory environment focused on space, reflection, and sonic resonance — like stepping into a room built from sound itself. Designed to invite curiosity and immersion.",
+    "featured": false,
+    "type": "Page",
+    "tags": ["exploration", "sound", "space", "immersive"],
+    "liveUrl": "https://aerovista-us.github.io/echo_room/",
+    "repoUrl": "https://github.com/aerovista-us/echo_room"
+  },
+  {
+    "id": "echorience",
+    "title": "Echorience",
+    "vibe": "Immersive / experiential",
+    "desc": "An immersive EchoStory concept focused on experience over structure. Designed to be felt rather than followed — part narrative, part environment.",
+    "featured": true,
+    "type": "Page",
+    "tags": ["immersive", "experience", "experimental", "environment"],
+    "liveUrl": "https://aerovista-us.github.io/echorience/",
+    "repoUrl": "https://github.com/aerovista-us/echorience"
+  },
+  {
+    "id": "bytecast-the_making",
+    "title": "ByteCast: The Making",
+    "vibe": "Behind-the-scenes / process",
+    "desc": "A behind-the-scenes EchoStory exploring how things are built — the thinking, iteration, and decisions that usually stay invisible. Process as narrative.",
+    "featured": true,
+    "type": "Page",
+    "tags": ["process", "behind-the-scenes", "bytecast", "build"],
+    "liveUrl": "https://aerovista-us.github.io/bytecast-the_making/",
+    "repoUrl": "https://github.com/aerovista-us/bytecast-the_making"
+  },
+  {
+    "id": "eoy",
+    "title": "End of Year",
+    "vibe": "Reflection / closing chapter",
+    "desc": "An end-of-year EchoStory — reflective, grounded, and forward-looking. Designed to close a chapter while quietly pointing toward what comes next.",
+    "featured": false,
+    "type": "Page",
+    "tags": ["reflection", "year-end", "introspective"],
+    "liveUrl": "https://aerovista-us.github.io/eoy/",
+    "repoUrl": "https://github.com/aerovista-us/eoy"
+  },
+  {
+    "id": "newyears26",
+    "title": "New Years ’26",
+    "vibe": "Transition / renewal",
+    "desc": "A New Year EchoStory marking the shift into 2026. Built around transition, intention, and momentum — less hype, more clarity.",
+    "featured": true,
+    "type": "Page",
+    "tags": ["newyear", "transition", "featured"],
+    "liveUrl": "https://aerovista-us.github.io/newyears26/",
+    "repoUrl": "https://github.com/aerovista-us/newyears26"
+  },
+  {
+    "id": "aerovista-onboarding-",
+    "title": "AeroVista Onboarding",
+    "vibe": "Orientation / brand narrative",
+    "desc": "A narrative-style onboarding experience introducing the AeroVista ecosystem. Less manual, more story — built to orient without overwhelming.",
+    "featured": true,
+    "type": "Page",
+    "tags": ["onboarding", "brand", "featured", "guide"],
+    "liveUrl": "https://aerovista-us.github.io/aerovista-onboarding-/",
+    "repoUrl": "https://github.com/aerovista-us/aerovista-onboarding-"
+  },
+  {
+    "id": "AV_About",
+    "title": "AV About",
+    "vibe": "Identity / context",
+    "desc": "A public-facing about page for AeroVista. Designed to explain why before what — values, intent, and direction presented as narrative.",
+    "featured": true,
+    "type": "Page",
+    "tags": ["about", "brand", "identity", "featured"],
+    "liveUrl": "https://aerovista-us.github.io/AV_About/",
+    "repoUrl": "https://github.com/aerovista-us/AV_About"
+  },
+  {
+    "id": "pines",
+    "title": "Pines",
+    "vibe": "Nature / quiet",
+    "desc": "A calm, nature-leaning EchoStory. Slow pacing, minimal framing, and space to breathe — designed to feel like stepping out of the noise.",
+    "featured": false,
+    "type": "Page",
+    "tags": ["nature", "calm", "ambient"],
+    "liveUrl": "https://aerovista-us.github.io/pines/",
+    "repoUrl": "https://github.com/aerovista-us/pines"
+  },
+  {
+    "id": "bonsaid",
+    "title": "Bonsaid",
+    "vibe": "Craft / patience",
+    "desc": "An EchoStory about shaping something slowly and intentionally. Focused on restraint, care, and the beauty of small, deliberate choices.",
+    "featured": false,
+    "type": "Page"
