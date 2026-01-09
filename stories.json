@@ -67,7 +67,7 @@
   },
   {
     "id": "newyears26",
-    "title": "New Years ’26",
+    "title": "New Years '26",
     "vibe": "Transition / renewal",
     "desc": "A New Year EchoStory marking the shift into 2026. Built around transition, intention, and momentum — less hype, more clarity.",
     "featured": true,
@@ -115,4 +115,53 @@
     "vibe": "Craft / patience",
     "desc": "An EchoStory about shaping something slowly and intentionally. Focused on restraint, care, and the beauty of small, deliberate choices.",
     "featured": false,
-    "type": "Page"
+    "type": "Page",
+    "tags": ["craft", "zen", "process"],
+    "liveUrl": "https://aerovista-us.github.io/bonsaid/",
+    "repoUrl": "https://github.com/aerovista-us/bonsaid"
+  },
+  {
+    "id": "bland",
+    "title": "Bland",
+    "vibe": "Minimal / contrast study",
+    "desc": "A deliberately restrained EchoStory that explores how absence and simplicity can still carry meaning. Minimalism as a design decision, not a lack.",
+    "featured": false,
+    "type": "Page",
+    "tags": ["minimal", "experimental", "contrast"],
+    "liveUrl": "https://aerovista-us.github.io/bland/",
+    "repoUrl": "https://github.com/aerovista-us/bland"
+  },
+  {
+    "id": "revolution",
+    "title": "Revolution",
+    "vibe": "Momentum / pushback",
+    "desc": "A high-energy EchoStory built around motion and resistance. Designed to feel like a turning point rather than a conclusion.",
+    "featured": false,
+    "type": "Page",
+    "tags": ["momentum", "anthem", "energy"],
+    "liveUrl": "https://aerovista-us.github.io/revolution/",
+    "repoUrl": "https://github.com/aerovista-us/revolution"
+  },
+  {
+    "id": "lookin4sheet",
+    "title": "Lookin' for Sheet",
+    "vibe": "Playful / irreverent",
+    "desc": "A lighter EchoStory with humor and looseness baked in. Less polished on purpose — built to feel spontaneous and human.",
+    "featured": false,
+    "type": "Page",
+    "tags": ["humor", "playful", "quirky"],
+    "liveUrl": "https://aerovista-us.github.io/lookin4sheet/",
+    "repoUrl": "https://github.com/aerovista-us/lookin4sheet"
+  },
+  {
+    "id": "cornerpocket",
+    "title": "Corner Pocket",
+    "vibe": "Nightlife / local scene",
+    "desc": "An EchoStory rooted in pool halls, late nights, and shared tables. Built around atmosphere, conversation, and unspoken rhythm.",
+    "featured": false,
+    "type": "Page",
+    "tags": ["nightlife", "pool", "local"],
+    "liveUrl": "https://aerovista-us.github.io/cornerpocket/",
+    "repoUrl": "https://github.com/aerovista-us/cornerpocket"
+  }
+]
